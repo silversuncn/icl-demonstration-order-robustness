@@ -1,0 +1,10 @@
+dataset,total_shots,cells,min_parser_success_rate,mean_parser_success_rate,invalid_rate_max
+mrpc,2,40,1.0,1.0,0.0
+mrpc,4,40,1.0,1.0,0.0
+mrpc,8,40,1.0,1.0,0.0
+rte,2,40,1.0,1.0,0.0
+rte,4,40,1.0,1.0,0.0
+rte,8,40,1.0,1.0,0.0
+sst2,2,40,1.0,1.0,0.0
+sst2,4,40,1.0,1.0,0.0
+sst2,8,40,1.0,1.0,0.0

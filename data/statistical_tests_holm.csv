@@ -1,0 +1,7 @@
+comparison,metric,n_pairs,n_nonzero_pairs,mean_difference,median_difference,positive_pairs,negative_pairs,test_method,p_raw,p_holm,holm_rank
+canonical_minus_random_mean,accuracy,45,42,0.00270833333333333,0.006249999999999978,25,17,monte_carlo_paired_sign_flip_mean_20000,0.26548672566371684,1.0,1
+canonical_minus_random_mean,macro_f1,45,44,0.002618824403442146,0.006233708493884715,26,19,monte_carlo_paired_sign_flip_mean_20000,0.2696365181740913,1.0,2
+label_grouped_minus_random_mean,accuracy,45,40,0.0016666666666666633,0.0,20,20,monte_carlo_paired_sign_flip_mean_20000,0.5289235538223089,1.0,5
+label_grouped_minus_random_mean,macro_f1,45,43,0.0015565297259493788,0.0,22,22,monte_carlo_paired_sign_flip_mean_20000,0.5580720963951803,1.0,6
+alternating_minus_random_mean,accuracy,45,40,0.0016666666666666633,0.0,21,19,monte_carlo_paired_sign_flip_mean_20000,0.46342682865856705,1.0,3
+alternating_minus_random_mean,macro_f1,45,43,0.001522874418752836,0.0,22,22,monte_carlo_paired_sign_flip_mean_20000,0.4983250837458127,1.0,4

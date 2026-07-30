@@ -1,0 +1,49 @@
+{
+  "aggregate_rows": 360,
+  "datasets": [
+    "sst2",
+    "rte",
+    "mrpc"
+  ],
+  "eval_examples_per_cell": 64,
+  "hardware": {
+    "device_recorded": "cuda:0",
+    "runtime": "single local GPU for cached model inference"
+  },
+  "holm_corrected_p_values": "all 1.0 for planned deterministic-vs-random comparisons",
+  "max_accuracy_spread": 0.0625,
+  "max_macro_f1_spread": 0.06746031746031744,
+  "max_random_order_macro_f1_range": 0.06372549019607843,
+  "model_id": "Qwen/Qwen3-4B",
+  "orders": [
+    "canonical",
+    "label_grouped",
+    "alternating",
+    "random_0",
+    "random_1",
+    "random_2",
+    "random_3",
+    "random_4"
+  ],
+  "parser_success_rate": 1.0,
+  "raw_evaluations": 23040,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "software_versions": {
+    "datasets": "5.0.0",
+    "python": "3.11.15",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.10.1"
+  },
+  "title": "Demonstration-Order Robustness in Few-Shot In-Context Text Classification",
+  "total_shots": [
+    2,
+    4,
+    8
+  ]
+}
