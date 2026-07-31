@@ -71,7 +71,7 @@ Row-count check:
 - The matrix contains `360` aggregate cells and `23,040` raw evaluations.
 - Parser success is `1.0` across all dataset/shot groups.
 - The maximum observed accuracy spread is `0.0625`.
-- The maximum observed macro-F1 spread is `0.06746031746031744`.
+- The maximum observed macro-F1 spread is `0.0675`.
 - Planned deterministic-order comparisons have Holm-corrected p-values of `1.0`, so deterministic orders are not supported as superior to the random-order mean in this finite grid.
 
 ## Requirements
