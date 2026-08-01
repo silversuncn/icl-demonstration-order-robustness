@@ -5,15 +5,15 @@
     "rte",
     "mrpc"
   ],
-  "eval_examples_per_cell": 64,
+  "eval_examples_per_cell": 200,
   "hardware": {
     "device_recorded": "cuda:0",
     "runtime": "single local GPU for cached model inference"
   },
   "holm_corrected_p_values": "all 1.0 for planned deterministic-vs-random comparisons",
-  "max_accuracy_spread": 0.0625,
-  "max_macro_f1_spread": 0.06746031746031744,
-  "max_random_order_macro_f1_range": 0.06372549019607843,
+  "max_accuracy_spread": 0.05500000000000005,
+  "max_macro_f1_spread": 0.05708452539254005,
+  "max_random_order_macro_f1_range": 0.05708452539254005,
   "model_id": "Qwen/Qwen3-4B",
   "orders": [
     "canonical",
@@ -26,7 +26,7 @@
     "random_4"
   ],
   "parser_success_rate": 1.0,
-  "raw_evaluations": 23040,
+  "raw_evaluations": 72000,
   "seeds": [
     1,
     2,

@@ -1,2 +1,2 @@
 aggregate_cells,duplicate_aggregate_cells,duplicate_raw_rows,missing_key_rows,prompt_hash_mismatches,raw_aggregate_mismatch_count,raw_rows,raw_rows_expected_from_aggregate,raw_rows_match_aggregate_sum
-360,0,0,0,0,0,23040,23040,True
+360,0,0,0,0,0,72000,72000,True
