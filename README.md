@@ -25,6 +25,7 @@ rerunning model inference.
 │   ├── statistical_tests_holm.csv
 │   ├── random_order_dispersion.csv
 │   ├── support_permutation_uniqueness.csv
+│   ├── permutation_multiplicity_by_shot.csv
 │   ├── validation_summary.csv
 │   └── worst_order_regret_by_order.csv
 ├── figures/
@@ -73,6 +74,7 @@ Row-count check:
 - The matrix contains `360` aggregate cells and `72,000` raw evaluations.
 - Candidate answer letters `A` and `B` are scored directly by mean token log-probability; no generation parser is used.
 - The eight order names are not always eight unique permutations: 2-shot strata have 2 unique named permutations, 4-shot strata have 5-8, and 8-shot strata have 8.
+- Among the five random names, duplicate realized permutations occur in 15/15 two-shot strata, 5/15 four-shot strata, and 0/15 eight-shot strata.
 - The maximum observed accuracy spread is `0.0550`.
 - The maximum observed macro-F1 spread is `0.0571`.
 - Planned deterministic-order comparisons have Holm-corrected p-values of `1.0`, so deterministic orders are not supported as superior to the random-order mean in this finite grid.

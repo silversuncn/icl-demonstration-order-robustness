@@ -85,6 +85,32 @@ def support_permutation_uniqueness(predictions_jsonl: Path) -> list[dict[str, in
     return result
 
 
+def permutation_multiplicity_by_shot(rows: list[dict[str, str]]) -> list[dict[str, float | int]]:
+    grouped: dict[int, list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        grouped[int(row["total_shots"])].append(row)
+
+    result = []
+    for shots in SHOT_ORDER:
+        shot_rows = grouped[shots]
+        named = [int(row["named_unique_count"]) for row in shot_rows]
+        random = [int(row["random_unique_count"]) for row in shot_rows]
+        result.append(
+            {
+                "total_shots": shots,
+                "strata": len(shot_rows),
+                "named_unique_min": min(named),
+                "named_unique_mean": statistics.mean(named),
+                "named_unique_max": max(named),
+                "random_unique_min": min(random),
+                "random_unique_mean": statistics.mean(random),
+                "random_unique_max": max(random),
+                "random_duplicate_strata": sum(value < 5 for value in random),
+            }
+        )
+    return result
+
+
 def apply_style(plt) -> None:
     plt.rcParams.update(
         {
@@ -178,6 +204,14 @@ def write_uniqueness_csv(rows: list[dict[str, int | str]], output_path: Path) ->
         writer.writerows(rows)
 
 
+def write_rows_csv(rows: list[dict[str, float | int]], output_path: Path) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--aggregate-csv", type=Path, required=True)
@@ -186,9 +220,13 @@ def main() -> int:
     parser.add_argument("--predictions-jsonl", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--uniqueness-csv", type=Path, required=True)
+    parser.add_argument("--multiplicity-csv", type=Path)
     args = parser.parse_args()
     render_figures(args.aggregate_csv, args.spread_csv, args.random_csv, args.output_dir)
-    write_uniqueness_csv(support_permutation_uniqueness(args.predictions_jsonl), args.uniqueness_csv)
+    uniqueness = support_permutation_uniqueness(args.predictions_jsonl)
+    write_uniqueness_csv(uniqueness, args.uniqueness_csv)
+    if args.multiplicity_csv:
+        write_rows_csv(permutation_multiplicity_by_shot(uniqueness), args.multiplicity_csv)
     print(f"PASS: generated {len(FIGURE_STEMS) * 2} figure files and {args.uniqueness_csv}")
     return 0
 

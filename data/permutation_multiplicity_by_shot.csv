@@ -1,0 +1,4 @@
+total_shots,strata,named_unique_min,named_unique_mean,named_unique_max,random_unique_min,random_unique_mean,random_unique_max,random_duplicate_strata
+2,15,2,2,2,1,1.9333333333333333,2,15
+4,15,5,6.666666666666667,8,4,4.666666666666667,5,5
+8,15,8,8,8,5,5,5,0

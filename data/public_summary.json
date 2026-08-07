@@ -47,6 +47,20 @@
       2
     ]
   },
+  "permutation_multiplicity_by_shot": [
+    {
+      "total_shots": 2,
+      "random_duplicate_strata": 15
+    },
+    {
+      "total_shots": 4,
+      "random_duplicate_strata": 5
+    },
+    {
+      "total_shots": 8,
+      "random_duplicate_strata": 0
+    }
+  ],
   "raw_evaluations": 72000,
   "scoring_protocol": "mean token log-probability over candidate answer letters A and B; no generation parser",
   "seeds": [

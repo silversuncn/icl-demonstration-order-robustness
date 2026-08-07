@@ -22,6 +22,7 @@ def verify() -> dict[str, object]:
     spread = read_csv("spread_by_dataset_shot.csv")
     random_dispersion = read_csv("random_order_dispersion.csv")
     uniqueness = read_csv("support_permutation_uniqueness.csv")
+    multiplicity = read_csv("permutation_multiplicity_by_shot.csv")
     tests = read_csv("statistical_tests_holm.csv")
     summary = json.loads((DATA / "public_summary.json").read_text(encoding="utf-8"))
 
@@ -56,6 +57,9 @@ def verify() -> dict[str, object]:
         "two_shot_named_unique": sorted({int(row["named_unique_count"]) for row in uniqueness if int(row["total_shots"]) == 2}),
         "four_shot_named_unique": sorted({int(row["named_unique_count"]) for row in uniqueness if int(row["total_shots"]) == 4}),
         "eight_shot_named_unique": sorted({int(row["named_unique_count"]) for row in uniqueness if int(row["total_shots"]) == 8}),
+        "multiplicity_rows": len(multiplicity),
+        "multiplicity_random_duplicate_strata": [int(row["random_duplicate_strata"]) for row in multiplicity],
+        "legacy_parser_fields": sorted(field for field in aggregate[0] if "parser" in field.lower()),
     }
 
     expected = {
@@ -76,6 +80,9 @@ def verify() -> dict[str, object]:
         "two_shot_named_unique": [2],
         "four_shot_named_unique": [5, 6, 7, 8],
         "eight_shot_named_unique": [8],
+        "multiplicity_rows": 3,
+        "multiplicity_random_duplicate_strata": [15, 5, 0],
+        "legacy_parser_fields": [],
     }
     failures = {}
     for key, value in expected.items():
