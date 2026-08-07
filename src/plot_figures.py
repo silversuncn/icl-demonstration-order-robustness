@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate Paper 24 figures and order-uniqueness evidence."""
+"""Regenerate demonstration-order figures and order-uniqueness evidence."""
 
 from __future__ import annotations
 
