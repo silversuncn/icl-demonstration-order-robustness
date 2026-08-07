@@ -24,14 +24,16 @@ rerunning model inference.
 │   ├── spread_by_dataset_shot.csv
 │   ├── statistical_tests_holm.csv
 │   ├── random_order_dispersion.csv
-│   ├── parser_success_summary.csv
+│   ├── support_permutation_uniqueness.csv
 │   ├── validation_summary.csv
 │   └── worst_order_regret_by_order.csv
 ├── figures/
 │   ├── order_spread_by_dataset_shot.png
+│   ├── order_accuracy_heatmap.png
 │   └── random_order_dispersion_by_dataset_shot.png
 ├── src/
-│   └── verify_public_results.py
+│   ├── verify_public_results.py
+│   └── plot_figures.py
 └── tests/
     └── test_public_results.py
 ```
@@ -69,7 +71,8 @@ Row-count check:
 ## Key Results
 
 - The matrix contains `360` aggregate cells and `72,000` raw evaluations.
-- Parser success is `1.0` across all dataset/shot groups.
+- Candidate answer letters `A` and `B` are scored directly by mean token log-probability; no generation parser is used.
+- The eight order names are not always eight unique permutations: 2-shot strata have 2 unique named permutations, 4-shot strata have 5-8, and 8-shot strata have 8.
 - The maximum observed accuracy spread is `0.0550`.
 - The maximum observed macro-F1 spread is `0.0571`.
 - Planned deterministic-order comparisons have Holm-corrected p-values of `1.0`, so deterministic orders are not supported as superior to the random-order mean in this finite grid.
@@ -82,6 +85,10 @@ The public verification script uses only the Python standard library.
 python src/verify_public_results.py
 python -m unittest discover -s tests -q
 ```
+
+`src/plot_figures.py` regenerates the three figures and the permutation-
+uniqueness table when supplied with the aggregate files and archived prediction
+JSONL. Figure generation requires Matplotlib.
 
 ## Citation
 

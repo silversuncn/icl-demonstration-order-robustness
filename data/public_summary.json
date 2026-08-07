@@ -25,8 +25,30 @@
     "random_3",
     "random_4"
   ],
-  "parser_success_rate": 1.0,
+  "permutation_uniqueness": {
+    "eight_shot_named_unique_counts": [
+      8
+    ],
+    "four_shot_named_unique_counts": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "named_variants_per_stratum": 8,
+    "random_unique_count_distribution": {
+      "1": 1,
+      "2": 14,
+      "4": 5,
+      "5": 25
+    },
+    "random_variants_per_stratum": 5,
+    "two_shot_named_unique_counts": [
+      2
+    ]
+  },
   "raw_evaluations": 72000,
+  "scoring_protocol": "mean token log-probability over candidate answer letters A and B; no generation parser",
   "seeds": [
     1,
     2,
