@@ -1,85 +1,139 @@
 {
-  "aggregate_rows": 360,
+  "aggregate_rows_in_public_package": 1200,
+  "cluster_sign_flip": {
+    "all_holm_adjusted_p_values": [
+      1.0
+    ],
+    "cluster_count": 15,
+    "cluster_unit": "dataset_seed",
+    "planned_tests": 6,
+    "total_assignments_per_test": 32768
+  },
+  "data_scope": "sanitized_processed_results_verification_package",
+  "dataset_count": 3,
   "datasets": [
     "sst2",
     "rte",
     "mrpc"
   ],
-  "eval_examples_per_cell": 200,
-  "hardware": {
-    "device_recorded": "cuda:0",
-    "runtime": "single local GPU for cached model inference"
+  "evaluation_instances_in_public_package": 240000,
+  "exhaustive_coverage": {
+    "2_shot_unique_permutations_per_dataset_seed": "2/2",
+    "4_shot_unique_permutations_per_dataset_seed": "24/24",
+    "8_shot_evaluated_unique_permutations_per_dataset_seed": "38/40320"
   },
-  "holm_corrected_p_values": "all 1.0 for planned deterministic-vs-random comparisons",
-  "max_accuracy_spread": 0.05500000000000005,
-  "max_macro_f1_spread": 0.05708452539254005,
-  "max_random_order_macro_f1_range": 0.05708452539254005,
-  "model_id": "Qwen/Qwen3-4B",
-  "orders": [
-    "canonical",
-    "label_grouped",
-    "alternating",
-    "random_0",
-    "random_1",
-    "random_2",
-    "random_3",
-    "random_4"
+  "exhaustive_extension_aggregate_rows": 840,
+  "held_out_examples_per_aggregate_cell": 200,
+  "max_accuracy_spread": 0.07000000000000006,
+  "max_macro_f1_spread": 0.07899849333757525,
+  "model": "Qwen/Qwen3-4B",
+  "original_named_grid_aggregate_rows": 360,
+  "per_sample_columns": [
+    "dataset",
+    "model_id",
+    "total_shots",
+    "seed",
+    "order_id",
+    "eval_id",
+    "gold_label",
+    "predicted_label",
+    "correct",
+    "score_A",
+    "score_B"
   ],
-  "permutation_uniqueness": {
-    "eight_shot_named_unique_counts": [
-      8
-    ],
-    "four_shot_named_unique_counts": [
-      5,
-      6,
-      7,
-      8
-    ],
-    "named_variants_per_stratum": 8,
-    "random_unique_count_distribution": {
-      "1": 1,
-      "2": 14,
-      "4": 5,
-      "5": 25
-    },
-    "random_variants_per_stratum": 5,
-    "two_shot_named_unique_counts": [
-      2
-    ]
-  },
-  "permutation_multiplicity_by_shot": [
-    {
-      "total_shots": 2,
-      "random_duplicate_strata": 15
-    },
-    {
-      "total_shots": 4,
-      "random_duplicate_strata": 5
-    },
-    {
-      "total_shots": 8,
-      "random_duplicate_strata": 0
-    }
-  ],
-  "raw_evaluations": 72000,
-  "scoring_protocol": "mean token log-probability over candidate answer letters A and B; no generation parser",
-  "seeds": [
+  "per_sample_prediction_rows": 72000,
+  "per_sample_scope": "original_named_grid_360_aggregate_cells_only",
+  "seed_values": [
     1,
     2,
     3,
     4,
     5
   ],
-  "software_versions": {
-    "datasets": "5.0.0",
-    "python": "3.11.15",
-    "torch": "2.11.0+cu128",
-    "transformers": "5.10.1"
-  },
-  "title": "Demonstration-Order Robustness in Few-Shot In-Context Text Classification",
-  "total_shots": [
+  "shot_values": [
     2,
     4,
     8
+  ],
+  "table_iv_comparison_baseline": "evaluated_unique_permutation_mean",
+  "table_iv_rows": [
+    {
+      "comparison": "seeded_base_minus_evaluated_unique_permutation_mean",
+      "description_policy": "mean_over_45_dataset_shot_seed_strata",
+      "display_mean_difference": "-0.0009",
+      "display_median_difference": "-0.0002",
+      "max_difference_vs_evaluated_unique_permutation_mean": 0.02270833333333333,
+      "mean_difference_vs_evaluated_unique_permutation_mean": -0.0009030214424951296,
+      "median_difference_vs_evaluated_unique_permutation_mean": -0.0002083333333333659,
+      "metric": "accuracy",
+      "min_difference_vs_evaluated_unique_permutation_mean": -0.03895833333333332,
+      "n_dataset_shot_seed_strata": 45,
+      "order_id": "seeded_base"
+    },
+    {
+      "comparison": "seeded_base_minus_evaluated_unique_permutation_mean",
+      "description_policy": "mean_over_45_dataset_shot_seed_strata",
+      "display_mean_difference": "-0.0011",
+      "display_median_difference": "-0.0000",
+      "max_difference_vs_evaluated_unique_permutation_mean": 0.02273145114418751,
+      "mean_difference_vs_evaluated_unique_permutation_mean": -0.0011499721552600656,
+      "median_difference_vs_evaluated_unique_permutation_mean": -4.000400039894103e-06,
+      "metric": "macro_f1",
+      "min_difference_vs_evaluated_unique_permutation_mean": -0.04445529275114779,
+      "n_dataset_shot_seed_strata": 45,
+      "order_id": "seeded_base"
+    },
+    {
+      "comparison": "label_grouped_minus_evaluated_unique_permutation_mean",
+      "description_policy": "mean_over_45_dataset_shot_seed_strata",
+      "display_mean_difference": "-0.0023",
+      "display_median_difference": "-0.0017",
+      "max_difference_vs_evaluated_unique_permutation_mean": 0.022499999999999964,
+      "mean_difference_vs_evaluated_unique_permutation_mean": -0.002347465886939573,
+      "median_difference_vs_evaluated_unique_permutation_mean": -0.0017105263157894957,
+      "metric": "accuracy",
+      "min_difference_vs_evaluated_unique_permutation_mean": -0.03541666666666665,
+      "n_dataset_shot_seed_strata": 45,
+      "order_id": "label_grouped"
+    },
+    {
+      "comparison": "label_grouped_minus_evaluated_unique_permutation_mean",
+      "description_policy": "mean_over_45_dataset_shot_seed_strata",
+      "display_mean_difference": "-0.0024",
+      "display_median_difference": "-0.0008",
+      "max_difference_vs_evaluated_unique_permutation_mean": 0.027084485306611228,
+      "mean_difference_vs_evaluated_unique_permutation_mean": -0.0024120962441169544,
+      "median_difference_vs_evaluated_unique_permutation_mean": -0.0008072747829688254,
+      "metric": "macro_f1",
+      "min_difference_vs_evaluated_unique_permutation_mean": -0.0373282169299789,
+      "n_dataset_shot_seed_strata": 45,
+      "order_id": "label_grouped"
+    },
+    {
+      "comparison": "alternating_minus_evaluated_unique_permutation_mean",
+      "description_policy": "mean_over_45_dataset_shot_seed_strata",
+      "display_mean_difference": "-0.0008",
+      "display_median_difference": "-0.0008",
+      "max_difference_vs_evaluated_unique_permutation_mean": 0.022499999999999964,
+      "mean_difference_vs_evaluated_unique_permutation_mean": -0.0007919103313840134,
+      "median_difference_vs_evaluated_unique_permutation_mean": -0.0007894736842105621,
+      "metric": "accuracy",
+      "min_difference_vs_evaluated_unique_permutation_mean": -0.02083333333333337,
+      "n_dataset_shot_seed_strata": 45,
+      "order_id": "alternating"
+    },
+    {
+      "comparison": "alternating_minus_evaluated_unique_permutation_mean",
+      "description_policy": "mean_over_45_dataset_shot_seed_strata",
+      "display_mean_difference": "-0.0007",
+      "display_median_difference": "-0.0008",
+      "max_difference_vs_evaluated_unique_permutation_mean": 0.027084485306611228,
+      "mean_difference_vs_evaluated_unique_permutation_mean": -0.0006843776648876402,
+      "median_difference_vs_evaluated_unique_permutation_mean": -0.0007766161859610321,
+      "metric": "macro_f1",
+      "min_difference_vs_evaluated_unique_permutation_mean": -0.02063265987015528,
+      "n_dataset_shot_seed_strata": 45,
+      "order_id": "alternating"
+    }
   ]
 }

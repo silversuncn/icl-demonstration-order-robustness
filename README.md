@@ -1,14 +1,15 @@
 # Demonstration-Order Robustness in Few-Shot In-Context Text Classification
 
-> **Demonstration-Order Robustness in Few-Shot In-Context Text Classification**  
+> Demonstration-Order Robustness in Few-Shot In-Context Text Classification<br>
 > Yaowen Sun
 
 ## Overview
 
-This repository contains a sanitized reproduction bundle for a finite-grid
-measurement study of demonstration-order robustness in few-shot in-context text
-classification. The bundle focuses on aggregate result verification rather than
-rerunning model inference.
+This repository contains a sanitized processed-results verification package for
+a finite-grid study of demonstration-order robustness in few-shot in-context
+text classification. It is intended to verify the reported aggregate tables,
+figures, per-sample original-grid predictions, and checksum records. It is not
+a full model-inference rerun package.
 
 ## Repository Structure
 
@@ -17,21 +18,34 @@ rerunning model inference.
 ├── README.md
 ├── CITATION.cff
 ├── LICENSE
+├── checksums_sha256.txt
 ├── requirements.txt
 ├── data/
-│   ├── public_summary.json
 │   ├── formal_aggregate.csv
+│   ├── formal_predictions_original_360.csv
+│   ├── results_2shot_exhaustive.csv
+│   ├── results_4shot_exhaustive.csv
+│   ├── results_8shot_extended.csv
+│   ├── permutation_mapping.json
 │   ├── spread_by_dataset_shot.csv
-│   ├── statistical_tests_holm.csv
+│   ├── descriptive_table_iv_v2.csv
+│   ├── descriptive_statistics.csv
+│   ├── cluster_sign_flip_tests_v2.csv
+│   ├── cluster_diagnostics_v2.csv
+│   ├── cluster_diagnostics_v2.json
+│   ├── cluster_per_shot_differences_v2.csv
 │   ├── random_order_dispersion.csv
+│   ├── random_permutation_diagnostics_v2.csv
 │   ├── support_permutation_uniqueness.csv
 │   ├── permutation_multiplicity_by_shot.csv
-│   ├── validation_summary.csv
-│   └── worst_order_regret_by_order.csv
+│   ├── two_shot_deterministic_permutation_diagnostics_v2.csv
+│   ├── two_shot_label_grouped_alternating_equivalence_v2.csv
+│   ├── worst_order_regret_by_order.csv
+│   ├── model_environment_record_v2.json
+│   ├── public_summary.json
+│   ├── public_v2_manifest.json
+│   └── validation_summary.csv
 ├── figures/
-│   ├── order_spread_by_dataset_shot.png
-│   ├── order_accuracy_heatmap.png
-│   └── random_order_dispersion_by_dataset_shot.png
 ├── src/
 │   ├── verify_public_results.py
 │   └── plot_figures.py
@@ -39,58 +53,83 @@ rerunning model inference.
     └── test_public_results.py
 ```
 
+## Data Scope
+
+| Component | Scope | Rows |
+| --- | --- | ---: |
+| Original named-order aggregate grid | 3 datasets x 3 shot budgets x 5 seeds x 8 orders | 360 |
+| 2-shot exhaustive extension | 3 datasets x 5 seeds x 2 unique permutations | 30 |
+| 4-shot exhaustive extension | 3 datasets x 5 seeds x 24 unique permutations | 360 |
+| 8-shot evaluated extension | 3 datasets x 5 seeds x 30 additional unique permutations | 450 |
+| Public aggregate evidence package | Original grid plus extensions | 1,200 |
+| Per-sample prediction file | Original 360 aggregate cells only | 72,000 |
+
+Each aggregate cell contains 200 held-out evaluation examples, so the public
+aggregate evidence package accounts for 240,000 evaluated instances. The
+per-sample CSV intentionally covers only the original 360-cell named-order grid;
+the exhaustive and extended cells are released as aggregate rows.
+
 ## Experimental Setup
 
-| Dimension | Values | Count |
-| --- | --- | ---: |
-| Model | `Qwen/Qwen3-4B` | 1 |
-| Datasets | `sst2`, `rte`, `mrpc` | 3 |
-| Total shots | `2`, `4`, `8` | 3 |
-| Seeds | `1`, `2`, `3`, `4`, `5` | 5 |
-| Orders | `canonical`, `label_grouped`, `alternating`, `random_0`-`random_4` | 8 |
-| Held-out examples per aggregate cell | `200` | 1 |
-
-Row-count check:
-
-```text
-3 datasets x 3 shot budgets x 5 seeds x 8 orders = 360 aggregate rows
-360 aggregate rows x 200 held-out examples = 72,000 raw evaluations
-```
-
-## Hardware & Environment
-
-| Component | Value |
+| Dimension | Values |
 | --- | --- |
-| Runtime target | cached local model inference |
-| Device record | `cuda:0` |
 | Model | `Qwen/Qwen3-4B` |
-| Python | `3.11.15` |
-| Torch | `2.11.0+cu128` |
-| Transformers | `5.10.1` |
-| Datasets | `5.0.0` |
+| Datasets | `sst2`, `rte`, `mrpc` |
+| Shot budgets | `2`, `4`, `8` |
+| Seeds | `1`, `2`, `3`, `4`, `5` |
+| Original named orders | `seeded_base`, `label_grouped`, `alternating`, `random_0`-`random_4` |
+| Held-out examples per aggregate cell | `200` |
+
+Candidate answer letters `A` and `B` are scored directly by mean token
+log-probability; no free-form generation parser is used in the reported
+measurements.
+
+## Permutation Coverage
+
+The deterministic and random named orders are evaluated on the original grid.
+The extension adds exhaustive or expanded unique-permutation coverage:
+
+| Shot budget | Evaluated unique permutations per dataset-seed stratum |
+| --- | ---: |
+| 2-shot | 2 of 2 |
+| 4-shot | 24 of 24 |
+| 8-shot | 38 of 40,320 |
+
+The 8-shot count combines the 8 original named-order permutations with 30
+additional evaluated unique permutations.
 
 ## Key Results
 
-- The matrix contains `360` aggregate cells and `72,000` raw evaluations.
-- Candidate answer letters `A` and `B` are scored directly by mean token log-probability; no generation parser is used.
-- The eight order names are not always eight unique permutations: 2-shot strata have 2 unique named permutations, 4-shot strata have 5-8, and 8-shot strata have 8.
-- Among the five random names, duplicate realized permutations occur in 15/15 two-shot strata, 5/15 four-shot strata, and 0/15 eight-shot strata.
-- The maximum observed accuracy spread is `0.0550`.
-- The maximum observed macro-F1 spread is `0.0571`.
-- Planned deterministic-order comparisons have Holm-corrected p-values of `1.0`, so deterministic orders are not supported as superior to the random-order mean in this finite grid.
+- The current aggregate verification package contains 1,200 aggregate cells and
+  240,000 evaluated instances.
+- The per-sample prediction CSV contains 72,000 sanitized rows for the original
+  360-cell named-order grid.
+- The maximum observed accuracy spread is `0.0700`.
+- The maximum observed macro-F1 spread is `0.0790`.
+- Table IV reports descriptive finite-grid differences against the evaluated
+  unique-permutation mean, not against the random-order-name mean.
+- The planned exact cluster sign-flip tests use 15 dataset-seed clusters and
+  six planned tests; all Holm-adjusted p-values are `1.0`.
+- Random-order dispersion diagnostics remain scoped to the original named-order
+  grid and are provided separately from the exhaustive extension.
 
-## Requirements
+## Verification
 
-The public verification script uses only the Python standard library.
+The main verifier uses only the Python standard library:
 
 ```bash
 python src/verify_public_results.py
 python -m unittest discover -s tests -q
 ```
 
-`src/plot_figures.py` regenerates the three figures and the permutation-
-uniqueness table when supplied with the aggregate files and archived prediction
-JSONL. Figure generation requires Matplotlib.
+The verifier checks row counts, schema, per-sample-to-aggregate closure for the
+original grid, the 1,200-cell spread table, Table IV descriptive values,
+cluster sign-flip p-values, manifest hashes, figure hashes, and package
+checksums.
+
+`src/plot_figures.py` is retained as an optional plotting helper and requires
+Matplotlib. The committed figure files are the publication-facing artifacts
+verified by hash.
 
 ## Citation
 

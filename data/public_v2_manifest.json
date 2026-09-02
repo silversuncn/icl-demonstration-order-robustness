@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "schema_version": "public_processed_results_v3_20260902",
+  "scope": {
+    "aggregate_rows_in_public_package": 1200,
+    "original_named_grid_aggregate_rows": 360,
+    "exhaustive_extension_aggregate_rows": 840,
+    "evaluation_instances_in_public_package": 240000,
+    "per_sample_prediction_rows": 72000,
+    "per_sample_scope": "original_named_grid_360_aggregate_cells_only",
+    "table_iv_comparison_baseline": "evaluated_unique_permutation_mean"
+  },
+  "data_sha256": {
+    "cluster_diagnostics_v2.csv": "b801b9a41f046e4b5b44e99c27f7f7ba3446c480ebfdad1a2d306a327c672e21",
+    "cluster_diagnostics_v2.json": "7b4d68f375b2bd8ea972924a6d6c0934d614acf139d74ea0e9f721b4622ac2f1",
+    "cluster_per_shot_differences_v2.csv": "85ad3d49363a7658028d03dc40c1514f413fc774ad31dc447c8f36856c1d8232",
+    "cluster_sign_flip_tests_v2.csv": "96c185dd31b7e460f34a336d74851471ffca2a1b23a7dd5c17144e830f7cae32",
+    "descriptive_statistics.csv": "90ba54ff69ffac8b1892093a43723822efda2fe8b41e16359238ebf33d843867",
+    "descriptive_table_iv_v2.csv": "90ba54ff69ffac8b1892093a43723822efda2fe8b41e16359238ebf33d843867",
+    "formal_aggregate.csv": "9c53c07020257dab1130a316092d77706bcdcadd32c4c3089207f2c411a18620",
+    "formal_predictions_original_360.csv": "ef33b527a157827767f4c7159165db492dc131c27caf781670e63c8251b18baf",
+    "model_environment_record_v2.json": "e90449f9493e0745577acddc6562fc99d6d27f6a7d7e33139c2402b1c791b588",
+    "permutation_mapping.json": "5cf8718be07b597a2c4749d4e4b5365bf0c94b83ed9a49b8c308e8fe590adb24",
+    "permutation_multiplicity_by_shot.csv": "8929b71bf9000cd366bf923c6d9679b5b7435454ec96b1dfaf7ea1a0550ed93b",
+    "public_summary.json": "c1d24e540220fbd2cf59125b960efe10571161b6708daa0dd39904b6a1633692",
+    "random_order_dispersion.csv": "7d91ed16104f8bfa4fac3030606d8df1ddb0d11c0e67efbad85e678f47ca265c",
+    "random_permutation_diagnostics_v2.csv": "b81ed4cf38e6bb729aacc3d8a5003e6a56f2850bb69e193fe6202f64efe04b63",
+    "results_2shot_exhaustive.csv": "0dc74b09574d5fb7381239415fc03b53841b23e89e57b40407f19e036d54669c",
+    "results_4shot_exhaustive.csv": "81d2163cf0f90aea42b7d406b6056b66956909a628798a0ae83df2635133a5dc",
+    "results_8shot_extended.csv": "07c3714bb12db10a139dcee0a9c29c5db2241b8dfc86dfb38231efb7917af58f",
+    "spread_by_dataset_shot.csv": "30b7c18d85154e1655baa7c0f9c63968aedd699d631047cd6865a21c301de42e",
+    "support_permutation_uniqueness.csv": "fe85a3bf8081120ce1dbdd6144789c08594f720d2bffaff140f0fbe8935c242c",
+    "two_shot_deterministic_permutation_diagnostics_v2.csv": "2f3172655dac771c86c93fb4b8c02009b4993b237fab8f6547894fd448893348",
+    "two_shot_label_grouped_alternating_equivalence_v2.csv": "d7012a37e663032583a76b39070e0e74c67d7738765a7301f562c5ade11c97bc",
+    "validation_summary.csv": "92a08aee49f94630c5966de3ab8860ecb14ffad090e280573db9e214085d022e",
+    "worst_order_regret_by_order.csv": "737ef8002edd711c40493171ab0fbbbb07639710f3898b690be3b0373807254f"
+  },
+  "figure_sha256": {
+    "order_accuracy_heatmap.png": "3a5867b8057d2c24b6866631a83bfa86baaea4f6c9cd349963c8deba7fc68700",
+    "order_accuracy_heatmap_v2.pdf": "870699482614eb4a063123981618ddc8a071f41f42a61cb38f6cc05aa18e8b77",
+    "order_accuracy_heatmap_v2.png": "3a5867b8057d2c24b6866631a83bfa86baaea4f6c9cd349963c8deba7fc68700",
+    "order_spread_by_dataset_shot.pdf": "581629e4fa7c1e094e0e91136d5218cfdd163d77995b6f63518d8ab6fcfd0723",
+    "order_spread_by_dataset_shot.png": "0f95fc7a3943e97d6f30e5a367b9ccb948ea11604d38802533212fc08f953864",
+    "order_spread_by_dataset_shot_v2.pdf": "581629e4fa7c1e094e0e91136d5218cfdd163d77995b6f63518d8ab6fcfd0723",
+    "order_spread_by_dataset_shot_v2.png": "0f95fc7a3943e97d6f30e5a367b9ccb948ea11604d38802533212fc08f953864",
+    "random_order_dispersion_by_dataset_shot.png": "22d4f175463282012dbb17f616614b0ea8218b748e2c7ac1d0c64662f611c816",
+    "random_order_dispersion_by_dataset_shot_v2.pdf": "1abcbaa2f6db6203e16a7458edf9ae1525ce7cd31f25940b29aca6833195f386",
+    "random_order_dispersion_by_dataset_shot_v2.png": "22d4f175463282012dbb17f616614b0ea8218b748e2c7ac1d0c64662f611c816"
+  }
+}

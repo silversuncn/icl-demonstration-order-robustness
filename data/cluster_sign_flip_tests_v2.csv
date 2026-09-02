@@ -1,0 +1,7 @@
+comparison,metric,n_clusters,n_nonzero_clusters,mean_difference,median_difference,positive_clusters,negative_clusters,zero_clusters,test_method,p_raw,p_holm,holm_rank,extreme_assignments,total_assignments
+seeded_base_minus_evaluated_unique_permutation_mean,accuracy,15,15,-0.0009030214424951296,-0.00015350877192980375,7,8,0,exact_cluster_sign_flip_mean_2^15_evaluated_unique_permutation_mean,0.6865234375,1.0,5,22496,32768
+seeded_base_minus_evaluated_unique_permutation_mean,macro_f1,15,15,-0.0011499721552600656,-0.00015625646758258652,7,8,0,exact_cluster_sign_flip_mean_2^15_evaluated_unique_permutation_mean,0.6466064453125,1.0,3,21188,32768
+label_grouped_minus_evaluated_unique_permutation_mean,accuracy,15,15,-0.002347465886939573,-0.0005226608187134755,7,8,0,exact_cluster_sign_flip_mean_2^15_evaluated_unique_permutation_mean,0.279052734375,1.0,1,9144,32768
+label_grouped_minus_evaluated_unique_permutation_mean,macro_f1,15,15,-0.0024120962441169544,-0.0005321204198611337,7,8,0,exact_cluster_sign_flip_mean_2^15_evaluated_unique_permutation_mean,0.3089599609375,1.0,2,10124,32768
+alternating_minus_evaluated_unique_permutation_mean,accuracy,15,15,-0.0007919103313840134,-0.0003728070175439043,7,8,0,exact_cluster_sign_flip_mean_2^15_evaluated_unique_permutation_mean,0.68365478515625,1.0,4,22402,32768
+alternating_minus_evaluated_unique_permutation_mean,macro_f1,15,15,-0.0006843776648876404,-0.00040256961431606175,7,8,0,exact_cluster_sign_flip_mean_2^15_evaluated_unique_permutation_mean,0.73004150390625,1.0,6,23922,32768

@@ -1,0 +1,36 @@
+{
+  "confirmed_from_cache": true,
+  "created_at": "2026-08-30T23:25:29+0800",
+  "datasets_requested": [
+    "sst2",
+    "rte",
+    "mrpc"
+  ],
+  "eval_cap": 200,
+  "model_id": "Qwen/Qwen3-4B",
+  "offline_datasets": true,
+  "offline_model": true,
+  "path_policy": "private cache and filesystem paths omitted from public bundle",
+  "revision_unknown": false,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "selected_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "software_versions": {
+    "datasets": "5.0.0",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.11.15",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.10.1"
+  },
+  "status": "PASS",
+  "total_shots": [
+    2,
+    4,
+    8
+  ]
+}

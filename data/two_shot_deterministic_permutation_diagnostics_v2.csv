@@ -1,0 +1,16 @@
+dataset,seed,total_shots,label_grouped_support_example_ids,alternating_support_example_ids,unique_deterministic_permutations,label_grouped_eq_alternating,seeded_base_support_example_ids,seeded_base_eq_label_grouped,seeded_base_eq_alternating
+mrpc,1,2,"[413, 2665]","[413, 2665]",2,True,"[2665, 413]",False,False
+mrpc,2,2,"[958, 1000]","[958, 1000]",1,True,"[958, 1000]",True,True
+mrpc,3,2,"[1241, 2671]","[1241, 2671]",2,True,"[2671, 1241]",False,False
+mrpc,4,2,"[2195, 421]","[2195, 421]",1,True,"[2195, 421]",True,True
+mrpc,5,2,"[2494, 870]","[2494, 870]",2,True,"[870, 2494]",False,False
+rte,1,2,"[2217, 2071]","[2217, 2071]",2,True,"[2071, 2217]",False,False
+rte,2,2,"[228, 1602]","[228, 1602]",1,True,"[228, 1602]",True,True
+rte,3,2,"[728, 1988]","[728, 1988]",1,True,"[728, 1988]",True,True
+rte,4,2,"[182, 2448]","[182, 2448]",1,True,"[182, 2448]",True,True
+rte,5,2,"[2228, 636]","[2228, 636]",1,True,"[2228, 636]",True,True
+sst2,1,2,"[40135, 65095]","[40135, 65095]",2,True,"[65095, 40135]",False,False
+sst2,2,2,"[54806, 53885]","[54806, 53885]",1,True,"[54806, 53885]",True,True
+sst2,3,2,"[474, 32893]","[474, 32893]",2,True,"[32893, 474]",False,False
+sst2,4,2,"[65320, 1388]","[65320, 1388]",1,True,"[65320, 1388]",True,True
+sst2,5,2,"[12795, 14464]","[12795, 14464]",1,True,"[12795, 14464]",True,True

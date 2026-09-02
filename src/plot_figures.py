@@ -18,7 +18,7 @@ FIGURE_STEMS = (
 )
 DATASET_ORDER = ("mrpc", "rte", "sst2")
 SHOT_ORDER = (2, 4, 8)
-ORDER_IDS = ("canonical", "label_grouped", "alternating", "random_0", "random_1", "random_2", "random_3", "random_4")
+ORDER_IDS = ("seeded_base", "label_grouped", "alternating", "random_0", "random_1", "random_2", "random_3", "random_4")
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -83,6 +83,12 @@ def support_permutation_uniqueness(predictions_jsonl: Path) -> list[dict[str, in
             }
         )
     return result
+
+
+def require_path(path: Path | None, option: str) -> Path:
+    if path is None:
+        raise SystemExit(f"{option} is required unless --aggregate-only is used")
+    return path
 
 
 def permutation_multiplicity_by_shot(rows: list[dict[str, str]]) -> list[dict[str, float | int]]:
@@ -217,17 +223,24 @@ def main() -> int:
     parser.add_argument("--aggregate-csv", type=Path, required=True)
     parser.add_argument("--spread-csv", type=Path, required=True)
     parser.add_argument("--random-csv", type=Path, required=True)
-    parser.add_argument("--predictions-jsonl", type=Path, required=True)
+    parser.add_argument("--predictions-jsonl", type=Path)
     parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--uniqueness-csv", type=Path, required=True)
+    parser.add_argument("--uniqueness-csv", type=Path)
     parser.add_argument("--multiplicity-csv", type=Path)
+    parser.add_argument("--aggregate-only", action="store_true")
     args = parser.parse_args()
     render_figures(args.aggregate_csv, args.spread_csv, args.random_csv, args.output_dir)
-    uniqueness = support_permutation_uniqueness(args.predictions_jsonl)
-    write_uniqueness_csv(uniqueness, args.uniqueness_csv)
+    if args.aggregate_only:
+        print(f"PASS: generated {len(FIGURE_STEMS) * 2} figure files in aggregate-only mode")
+        return 0
+
+    predictions_jsonl = require_path(args.predictions_jsonl, "--predictions-jsonl")
+    uniqueness_csv = require_path(args.uniqueness_csv, "--uniqueness-csv")
+    uniqueness = support_permutation_uniqueness(predictions_jsonl)
+    write_uniqueness_csv(uniqueness, uniqueness_csv)
     if args.multiplicity_csv:
         write_rows_csv(permutation_multiplicity_by_shot(uniqueness), args.multiplicity_csv)
-    print(f"PASS: generated {len(FIGURE_STEMS) * 2} figure files and {args.uniqueness_csv}")
+    print(f"PASS: generated {len(FIGURE_STEMS) * 2} figure files and {uniqueness_csv}")
     return 0
 
 
